@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Registrar Cliente</h2>
+
+<form [formGroup]="formContact" (ngSubmit)="SaveContact()">
+  <mat-dialog-content>
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="outline" class="fullwidth">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" placeholder="Ingrese el nombre del cliente">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="outline" class="fullwidth">
+          <mat-label>Correo</mat-label>
+          <input matInput formControlName="email" placeholder="Ingrese el email del cliente">
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button matButton mat-dialog-close (click)="CloseModal()">Cancelar</button>
+    <button matButton type="submit" cdkFocusInitial>Guardar Cambios</button>
+  </mat-dialog-actions>
+</form>

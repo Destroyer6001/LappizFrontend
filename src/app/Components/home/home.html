@@ -1,0 +1,24 @@
+<mat-toolbar class="toolbar">
+  <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" aria-label="Menu button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="brand-name">Registro De Clientes Lappiz LowCode</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" class="sidenav" [opened]="isSideNavOpen">
+    <div class="sidenav-header">
+      <h3>Menu De Navegacion</h3>
+    </div>
+    <mat-nav-list>
+      <mat-list-item class="listItem" (click)="redirectLink('/contacts'); sidenav.close()">
+        <mat-icon matListItemIcon>contacts</mat-icon>
+        <span matListItemTitle>Interesados</span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

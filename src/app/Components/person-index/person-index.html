@@ -1,0 +1,38 @@
+<mat-card appearance="outlined">
+  <mat-card-header class="header">
+    <mat-card-title>Administrador de solicitudes de subcripciones</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if(isLoading)
+    {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+    <div class="table-container mat-elevation-z8">
+      <div class="search-add-container">
+        <mat-form-field class="search-field" appearance="outline">
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="ApplyFilter($event)" #inputElement>
+          <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+        <button mat-icon-button class="add-button-icon" (click)="OpenDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <div style="overflow-y: auto; height: 300px">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+            <td mat-cell *matCellDef="let row">{{row.name}}</td>
+          </ng-container>
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+            <td mat-cell *matCellDef="let row">{{row.email}}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns sticky:true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="selected page of persons"></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
